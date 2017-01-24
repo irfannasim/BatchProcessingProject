@@ -1,4 +1,4 @@
-package com.ts.com.ts.model;
+package com.ts.model;
 
 /**
  * Created by i.nasim on 18-Jan-17.
@@ -11,6 +11,7 @@ public class User {
     private String gender;
     private String password;
     private boolean status;
+    private boolean isDeleted;
 
     public User() {
     }
@@ -25,6 +26,7 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 
@@ -82,5 +84,13 @@ public class User {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

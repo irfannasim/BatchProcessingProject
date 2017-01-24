@@ -1,8 +1,11 @@
 package com.ts.config;
 
+import com.ts.util.LogUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 /**
  * Created by i.nasim on 18-Jan-17.
@@ -14,9 +17,9 @@ public class DBConnection {
 
         try {
             Class.forName(TSResourceBundle.DB_BUNDLE.getString("driverName"));
-            System.out.println("Congrats - Seems your MySQL JDBC Driver Registered!");
+            LogUtil.log("Congrats - Seems your MySQL JDBC Driver Registered!", Level.INFO, null);
         } catch (ClassNotFoundException e) {
-            System.out.println("Sorry, couldn't found JDBC driver. Make sure you have added JDBC Maven Dependency Correctly");
+            LogUtil.log("Sorry, couldn't found JDBC driver. Make sure you have added JDBC Maven Dependency Correctly", Level.INFO, null);
             e.printStackTrace();
             return con;
         }
@@ -31,12 +34,12 @@ public class DBConnection {
 
             con = DriverManager.getConnection(url, TSResourceBundle.DB_BUNDLE.getString("userName"), TSResourceBundle.DB_BUNDLE.getString("password"));
             if (con != null) {
-                System.out.println("Connection Successful! Enjoy. Now it's time to play with data");
+                LogUtil.log("Connection Successful! Enjoy. Now it's time to play with data", Level.INFO, null);
             } else {
-                System.out.println("Failed to make connection!");
+                LogUtil.log("Failed to make connection!", Level.INFO, null);
             }
         } catch (SQLException e) {
-            System.out.println("MySQL Connection Failed!");
+            LogUtil.log("MySQL Connection Failed!", Level.INFO, null);
             e.printStackTrace();
             return con;
         }
